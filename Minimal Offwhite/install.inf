@@ -1,0 +1,73 @@
+; Right-click > Install, then pick the scheme in Mouse Properties > Pointers.
+[Version]
+signature="$CHICAGO$"
+
+[DefaultInstall]
+CopyFiles = Scheme.Cur
+AddReg    = Scheme.Reg, Wreg
+
+[DestinationDirs]
+Scheme.Cur = 10,"%CUR_DIR%"
+
+[Scheme.Reg]
+HKCU,"Control Panel\Cursors\Schemes","%SCHEME_NAME%",,"%10%\%CUR_DIR%\%Arrow%,%10%\%CUR_DIR%\%Help%,%10%\%CUR_DIR%\%AppStarting%,%10%\%CUR_DIR%\%Wait%,%10%\%CUR_DIR%\%Crosshair%,%10%\%CUR_DIR%\%IBeam%,%10%\%CUR_DIR%\%NWPen%,%10%\%CUR_DIR%\%No%,%10%\%CUR_DIR%\%SizeNS%,%10%\%CUR_DIR%\%SizeWE%,%10%\%CUR_DIR%\%SizeNWSE%,%10%\%CUR_DIR%\%SizeNESW%,%10%\%CUR_DIR%\%SizeAll%,%10%\%CUR_DIR%\%UpArrow%,%10%\%CUR_DIR%\%Hand%,%10%\%CUR_DIR%\%Pin%,%10%\%CUR_DIR%\%Person%"
+
+[Wreg]
+HKCU,"Control Panel\Cursors",,0x00020000,"%SCHEME_NAME%"
+HKCU,"Control Panel\Cursors",Arrow,0x00020000,"%10%\%CUR_DIR%\%Arrow%"
+HKCU,"Control Panel\Cursors",Help,0x00020000,"%10%\%CUR_DIR%\%Help%"
+HKCU,"Control Panel\Cursors",AppStarting,0x00020000,"%10%\%CUR_DIR%\%AppStarting%"
+HKCU,"Control Panel\Cursors",Wait,0x00020000,"%10%\%CUR_DIR%\%Wait%"
+HKCU,"Control Panel\Cursors",Crosshair,0x00020000,"%10%\%CUR_DIR%\%Crosshair%"
+HKCU,"Control Panel\Cursors",IBeam,0x00020000,"%10%\%CUR_DIR%\%IBeam%"
+HKCU,"Control Panel\Cursors",NWPen,0x00020000,"%10%\%CUR_DIR%\%NWPen%"
+HKCU,"Control Panel\Cursors",No,0x00020000,"%10%\%CUR_DIR%\%No%"
+HKCU,"Control Panel\Cursors",SizeNS,0x00020000,"%10%\%CUR_DIR%\%SizeNS%"
+HKCU,"Control Panel\Cursors",SizeWE,0x00020000,"%10%\%CUR_DIR%\%SizeWE%"
+HKCU,"Control Panel\Cursors",SizeNWSE,0x00020000,"%10%\%CUR_DIR%\%SizeNWSE%"
+HKCU,"Control Panel\Cursors",SizeNESW,0x00020000,"%10%\%CUR_DIR%\%SizeNESW%"
+HKCU,"Control Panel\Cursors",SizeAll,0x00020000,"%10%\%CUR_DIR%\%SizeAll%"
+HKCU,"Control Panel\Cursors",UpArrow,0x00020000,"%10%\%CUR_DIR%\%UpArrow%"
+HKCU,"Control Panel\Cursors",Hand,0x00020000,"%10%\%CUR_DIR%\%Hand%"
+HKCU,"Control Panel\Cursors",Pin,0x00020000,"%10%\%CUR_DIR%\%Pin%"
+HKCU,"Control Panel\Cursors",Person,0x00020000,"%10%\%CUR_DIR%\%Person%"
+
+[Scheme.Cur]
+pointer.cur
+help.cur
+working.ani
+busy.ani
+precision.cur
+text.cur
+handwriting.cur
+unavailable.cur
+vert.cur
+horz.cur
+dgn1.cur
+dgn2.cur
+move.cur
+alternate.cur
+link.cur
+pin.cur
+person.cur
+
+[Strings]
+CUR_DIR     = "Cursors\Minimal Offwhite"
+SCHEME_NAME = "Minimal Offwhite"
+Arrow       = "pointer.cur"
+Help        = "help.cur"
+AppStarting = "working.ani"
+Wait        = "busy.ani"
+Crosshair   = "precision.cur"
+IBeam       = "text.cur"
+NWPen       = "handwriting.cur"
+No          = "unavailable.cur"
+SizeNS      = "vert.cur"
+SizeWE      = "horz.cur"
+SizeNWSE    = "dgn1.cur"
+SizeNESW    = "dgn2.cur"
+SizeAll     = "move.cur"
+UpArrow     = "alternate.cur"
+Hand        = "link.cur"
+Pin         = "pin.cur"
+Person      = "person.cur"
