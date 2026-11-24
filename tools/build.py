@@ -150,12 +150,47 @@ def build_linux(src_dir, theme, comment):
                 o.write(f'{a} {names[0]}\n')
 
 
+# ---------- README previews ----------
+
+PREVIEWS = os.path.join(ROOT, 'previews')
+TILE = 72
+BG = {'light': (236, 236, 236, 255), 'dark': (36, 37, 42, 255)}
+
+def _tile(img, bg):
+    t = Image.new('RGBA', (TILE, TILE), bg)
+    bbox = img.getchannel('A').point(lambda a: 255 if a > 8 else 0).getbbox()
+    art = img.crop(bbox)
+    t.alpha_composite(art, ((TILE - art.width) // 2, (TILE - art.height) // 2))
+    return t.convert('RGB')
+
+def build_previews():
+    """One tile per cursor and variant; animated cursors become GIFs."""
+    shutil.rmtree(PREVIEWS, ignore_errors=True)
+    os.makedirs(PREVIEWS)
+    for variant, src in (('light', SRC), ('dark', DARK)):
+        for f in NAMES:
+            data = open(os.path.join(src, f), 'rb').read()
+            stem = os.path.join(PREVIEWS, f'{os.path.splitext(f)[0]}-{variant}')
+            # Show on a contrasting background: light cursors on dark, dark cursors on light.
+            bg = BG['dark' if variant == 'light' else 'light']
+            if f.endswith('.cur'):
+                _tile(read_cur(data)[-1][0], bg).save(stem + '.png', optimize=True)
+            else:
+                ani = read_ani(data)
+                frames = [_tile(ani['frames'][i][-1][0], bg) for i, _ in ani['steps']]
+                durs = [max(20, round(j * JIFFY_MS)) for _, j in ani['steps']]
+                frames[0].save(stem + '.gif', save_all=True, append_images=frames[1:],
+                               duration=durs, loop=0, optimize=True)
+
+
 def main():
     print('Building Windows dark scheme...')
     build_windows_dark()
     print('Building Linux themes...')
     build_linux(SRC, 'Minimal-Offwhite', 'Minimal off-white cursors')
     build_linux(DARK, 'Minimal-Offwhite-Dark', 'Minimal dark cursors with off-white outline')
+    print('Building README previews...')
+    build_previews()
     print('Done.')
 
 if __name__ == '__main__':
