@@ -1,0 +1,7 @@
+* text=auto
+*.sh text eol=lf
+*.theme text eol=lf
+aliases text eol=lf
+*.cur binary
+*.ani binary
+linux/*/cursors/* binary
